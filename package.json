@@ -4,7 +4,8 @@
   "description": "A simple react static site generator",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-it"
+    "release": "release-it",
+    "dev": "node lib/cmd.js --verbose --serve --example"
   },
   "bin": {
     "pequeno": "lib/cmd.js"
