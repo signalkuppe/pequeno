@@ -1,13 +1,13 @@
 {
   "name": "pequeno",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple react static site generator",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "release": "release-it"
+    "release": "release-it"
   },
   "bin": {
-    "pequeno": "./lib/cmd.js"
+    "pequeno": "lib/cmd.js"
   },
   "main": "./lib/exports.js",
   "author": "",
