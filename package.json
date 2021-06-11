@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
-    "dev": "node lib/cmd.js --verbose --serve --example"
+    "dev": "node lib/cmd.js --verbose --serve --example",
+    "build": "node lib/cmd.js --verbose --example"
   },
   "bin": {
     "pequeno": "lib/cmd.js"
@@ -29,8 +30,8 @@
     "ora": "5.4.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "styled-components": "4.4.1",
-    "winston": "^3.3.3"
+    "styled-components": "5.0.0",
+    "winston": "3.3.3"
   },
   "devDependencies": {
     "release-it": "^14.8.0"
