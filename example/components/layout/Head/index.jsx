@@ -1,5 +1,7 @@
 import React from 'react';
 import vars from '../../../vars';
+import Script from '../../../../lib/Script';
+import client from './index.client.js';
 
 export default function Head({
     title,
@@ -23,7 +25,7 @@ export default function Head({
             />
             <link
                 rel="manifest"
-                href="/site.webmanifest"
+                href="/manifest.json"
                 crossOrigin="use-credentials"
             />
             {title && (
@@ -72,12 +74,13 @@ export default function Head({
             />
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta name="theme-color" content="#ffffff" />
-            <meta name="generator" content="eleventy-react" />
+            <meta name="generator" content="pequeno" />
             <meta name="og:type" content="website" />
-            <meta name="twitter:site" content="@LifestageAG" />
+            <meta name="twitter:site" content="@signalkuppe" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
+            <Script inline>{client}</Script>
         </head>
     );
 }

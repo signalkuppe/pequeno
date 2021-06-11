@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../../theme';
+import { getVar } from '../../../theme';
 
 const StyledVerticalSpace = styled.div`
     margin-top: ${(props) => {
-        return 'calc(' + (props.size || 1) + ' * ' + theme.spaceUnit + ')';
+        return (
+            'calc(' + (props.size || 1) + ' * ' + getVar('--space-unit') + ')'
+        );
     }};
 `;
 

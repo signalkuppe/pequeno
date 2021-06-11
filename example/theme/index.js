@@ -3,9 +3,6 @@ export const vars = {
     '--space-unit': '1.5em',
 };
 
-export default {
-    colors: {
-        primary: vars['--color-primary'],
-    },
-    spaceUnit: vars['--space-unit'],
+export const getVar = function (v) {
+    return `var(${v})`;
 };

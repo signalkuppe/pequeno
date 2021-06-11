@@ -1,6 +1,7 @@
-(function () {
-    $('#jquery-example-div').hide();
-    $('#jquery-example-button').click(function () {
-        $('#jquery-example-div').fadeIn();
-    });
-})();
+const div = $('#jquery-example-div');
+const button = $('#jquery-example-button');
+$(div).hide();
+$(button).click(function () {
+    $(div).fadeIn();
+    $(button).hide();
+});

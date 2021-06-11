@@ -34,7 +34,13 @@ export default function HomePage({ route }) {
                 />
                 <figcaption>
                     Albergo Pequeno, seen from{' '}
-                    <a href="https://en.wikipedia.org/wiki/Cremeno">Cremeno</a>
+                    <a
+                        target="_blank"
+                        rel="noopener"
+                        href="https://en.wikipedia.org/wiki/Cremeno"
+                    >
+                        Cremeno
+                    </a>
                 </figcaption>
             </figure>
             <VerticalSpace size={1.5} />

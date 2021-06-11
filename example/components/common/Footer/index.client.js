@@ -1,3 +1,1 @@
-(function () {
-    document.querySelector('#copyright').innerHTML = new Date().getFullYear();
-})();
+document.querySelector('#copyright').innerHTML = new Date().getFullYear();

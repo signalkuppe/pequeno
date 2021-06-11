@@ -40,6 +40,11 @@ export default function News({ pagination, route }) {
             }
         >
             <h1>News</h1>
+            <p>
+                This page show a paginated list of{' '}
+                <strong>items fetched from an API</strong> at build time. <br />
+                Each item generates a page, with its own url.
+            </p>
             <List reset>
                 {news.map((n, i) => (
                     <li key={i}>

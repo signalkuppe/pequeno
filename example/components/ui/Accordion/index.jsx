@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import Script from '../../../../lib/Script';
 import client from './index.client.js';
 
-export default function Accordion({ items }) {
+export default function Accordion({ items, ...props }) {
     return (
         <>
-            <dl id="js-accordion">
+            <dl {...props}>
                 {items.map((item, i) => (
                     <Fragment key={i}>
                         <dt>
@@ -24,6 +24,12 @@ export default function Accordion({ items }) {
                     {
                         where: 'head',
                         tag: '<link rel="stylesheet" href="/libs/fisarmonica/fisarmonica.css" />',
+                    },
+                ]}
+                vars={[
+                    {
+                        name: 'accordion_selector',
+                        value: `.${props.className} `,
                     },
                 ]}
             >

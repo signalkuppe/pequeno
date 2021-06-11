@@ -5,7 +5,7 @@ import client from './index.client.js';
 export default function TestButton({ children }) {
     return (
         <>
-            <button className="js-test-button">{children}</button>
+            <button id="testButton">{children}</button>
             <Script>{client}</Script>
         </>
     );

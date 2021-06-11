@@ -3,6 +3,9 @@ import vars from '../vars';
 import BaseLayout from '../components/layout/Base';
 import Head from '../components/layout/Head';
 import Image from '../components/ui/Image';
+import List from '../components/ui/List';
+import Link from '../components/ui/Link';
+import VerticalSpace from '../components/ui/VerticalSpace';
 
 export const paginate = {
     data: 'news',
@@ -38,6 +41,19 @@ export default function NewsItem({ route, pagination }) {
             <h1>{news.title}</h1>
             <Image src={news.image} width="1280" height="853" />
             <div dangerouslySetInnerHTML={{ __html: news.body }} />
+            <VerticalSpace size={2} />
+            <List reset inline>
+                {pagination.prev && (
+                    <li>
+                        <Link href={pagination.prev}>&laquo; Prev</Link>
+                    </li>
+                )}
+                {pagination.next && (
+                    <li>
+                        <Link href={pagination.next}>Next &raquo;</Link>
+                    </li>
+                )}
+            </List>
         </BaseLayout>
     );
 }
