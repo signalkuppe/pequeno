@@ -2,6 +2,10 @@
 
 > A simpler [React](https://reactjs.org/) static site generator.
 
+## Demo
+
+[https://priceless-euclid-d30b74.netlify.app/](https://priceless-euclid-d30b74.netlify.app/)
+
 ## Why
 
 **Jsx** emerged as the leading template engine, since it gives a great **developer experience** together with **styled components.**
