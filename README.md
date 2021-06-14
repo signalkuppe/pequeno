@@ -19,7 +19,7 @@ npm install pequeno --save
 
 ## Quick start
 
-1. Create some pages in src/pages, giving them a paermalink like this
+1. Create some pages in src/pages, giving them a permalink like this
 
 ```js
 import React from 'react';
@@ -39,7 +39,7 @@ npx pequeno
 
 ## Cli options
 
-you can run the pequeno command with this options
+you can run the pequeno command with these options
 
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
@@ -60,12 +60,12 @@ module.exports = {
     srcDir: 'src',
     // where to search for data (relative to srcDir)
     dataDir: 'data',
-    // public directory that will be copied to  outputDir (relative to srcDir)
+    // public directory that will be copied to outputDir (relative to srcDir)
     publicDir: 'public',
     // where to look for pages (relative to srcDir)
     pagesDir: 'pages',
     // an object that tells what to copy (key) and where (value)
-    // usefull to copy external libs to the destination folder
+    // useful to copy external libs to the destination folder
     copy: {
         'node_modules/vanilla-lazyload/dist/lazyload.js':
             'libs/vanilla-lazyload/lazyload.js',
@@ -79,63 +79,26 @@ module.exports = {
 
 Pequeno integrates [Styled Components](https://styled-components.com/) for styling. but you can also use plain css if you want.
 
-A nice approach I found very usefull is to use `css custom properties` mapped to a theme object like this
-
-**theme.js**
-
-```js
-export const vars = {
-    '--color-primary': 'crimson',
-    '--space-unit': '1.5em',
-};
-
-export const getVar = function (v) {
-    return `var(${v})`;
-};
-```
-
 **component usage**
 
 ```js
 import React from 'react';
 import styled from 'styled-components';
-import { getVar } from '../../../theme';
 
-const StyledVerticalSpace = styled.div`
-    margin-top: ${(props) => {
-        return (
-            'calc(' + (props.size || 1) + ' * ' + getVar('--space-unit') + ')'
-        );
-    }};
+const StyledButton = styled.button`
+    background: ${props => props.primary ? var(--color-primary) : var(--color-secondary)}
 `;
 
-export default function VerticalSpace({ size, ...props }) {
-    return <StyledVerticalSpace aria-hidden="true" $size={size} {...props} />;
+export default function MyButton({ primary, ...props }) {
+    return <StyledButton primary={primary} {...props} />;
 }
 ```
 
-**and finally add vars to the global style**
-
-```js
-import { createGlobalStyle, css } from 'styled-components';
-import { vars, getVar } from './';
-
-const rootVars = css`
-    ${vars}
-`;
-
-const GlobalStyles = createGlobalStyle`
-  :root {
-    ${rootVars};
-  }
-`;
-```
-
-You get the best of the two worlds (css in js and custom properties).
+See styled components docs for detailed usage.
 
 ## Dealing with client-side js
 
-You can use a classic approach, or using the **built-in Script component** to add js in a more "component way" like this
+You can use a classic approach, or use the **built-in Script component** to add js in a more "component way" like this
 
 ```js
 import React from 'react';
@@ -161,7 +124,7 @@ testButton.addEventListener('click', function () {
 ```
 
 Say you have **a component that need some vanilla client-side js logic** and maybe an external library, like an [accordion](https://github.com/signalkuppe/fisarmonica) thats adds some css and js
-Just add the `<Script>` component in you code like this
+Just add the `<Script>` component in your code like this
 
 ```js
 import React, { Fragment } from 'react';
@@ -206,7 +169,7 @@ export default function Accordion({ items, ...props }) {
 }
 ```
 
-The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). you can spicify the tag and also where to append it (head/body)
+The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). you can specify the tag and also where to append it (head/body)
 
 Then in **index.client.js**
 
@@ -265,7 +228,3 @@ export default function SvgTest() {
 
 Pequeno uses [Esbuild](https://esbuild.github.io/) for bundling, so it should be quite fast.
 However performance optimizations are still missing.
-
-## Warnings
-
-_⚠️ very much a work in progress_

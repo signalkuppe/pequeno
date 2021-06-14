@@ -13,7 +13,9 @@ const StyledList = styled.ul`
         props.inline &&
         css`
             display: flex;
-            gap: 1em;
+            > * + * {
+                margin-left: 1em;
+            }
         `}
 `;
 
