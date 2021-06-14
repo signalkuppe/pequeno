@@ -75,6 +75,95 @@ module.exports = {
 };
 ```
 
+## Data
+
+You can provide data at build time by creating files into the `dataDir` folder.
+Each data file should export a promise.
+
+For example:
+
+**data/news.js**
+
+```js
+module.exports = function () {
+    return new Promise((resolve) => {
+        const response = await fetch('https://my.custom.endpoint');
+        const data = await response.json();
+        resolve(data);
+    });
+};
+```
+
+Now you have a `news` collection available in your templates.
+
+## Pagination
+
+You can paginate your data creating lists of content. Just export a **paginate object** giving the collection name in the data prop. For example you can create pages that lists chunks of 10 news in this way.
+
+```js
+export const paginate = {
+    data: 'news',
+    size: 10,
+};
+
+export const permalink = function (data) {
+    const { page } = data.pagination;
+    if (page === 1) {
+        return `/news/index.html`;
+    } else {
+        return `/news/${page}/index.html`;
+    }
+};
+
+export default function News({ pagination, route }) {
+    const news = pagination.items;
+    return (
+        <ul>
+            {news.map((n, i) => (
+                <li key={i}>
+                    <Link underline href={`/news/${n.slug}/`}>
+                        <h2>{n.title}</h2>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
+}
+```
+
+You will get a pagination object with this data.
+
+```js
+{
+    page: 1,
+    total: 4,
+    items: [],
+    prev: null,
+    next: '/news/2/index.html'
+}
+```
+
+### Programmatically create pages for items.
+
+Just use a **size of 1** in the pagination export and you'll get a page for each news
+
+```js
+export const paginate = {
+    data: 'news',
+    size: 1,
+};
+
+export const permalink = function (data) {
+    const news = data.pagination.items[0];
+    return `/news/${news.slug}/index.html`;
+};
+
+export default function News({ pagination, route }) {
+    const news = pagination.items[0];
+    return <h1>{news.title}</h1>;
+}
+```
+
 ## Styling
 
 Pequeno integrates [Styled Components](https://styled-components.com/) for styling. but you can also use plain css if you want.
