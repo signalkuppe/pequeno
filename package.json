@@ -1,13 +1,13 @@
 {
   "name": "pequeno",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A simple react static site generator",
   "homepage": "https://github.com/signalkuppe/pequeno",
   "author": {
-    "name" : "Signalkuppe",
-    "url" : "https://www.signalkuppe.com"
+    "name": "Signalkuppe",
+    "url": "https://www.signalkuppe.com"
   },
-   "keywords": [
+  "keywords": [
     "react",
     "ssg",
     "static",
