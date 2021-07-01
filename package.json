@@ -2,6 +2,18 @@
   "name": "pequeno",
   "version": "0.0.13",
   "description": "A simple react static site generator",
+  "homepage": "https://github.com/signalkuppe/pequeno",
+  "author": {
+    "name" : "Signalkuppe",
+    "url" : "https://www.signalkuppe.com"
+  },
+   "keywords": [
+    "react",
+    "ssg",
+    "static",
+    "site",
+    "generator"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
@@ -12,7 +24,6 @@
     "pequeno": "lib/cmd.js"
   },
   "main": "./lib/exports.js",
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "bluebird": "3.7.2",
