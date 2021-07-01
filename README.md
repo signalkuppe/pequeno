@@ -44,7 +44,7 @@ you can run the pequeno command with these options
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
 -   `--serve` fires a server that watches for changes.
--   `--example` builds and example site.
+-   `--example` builds the example site.
 
 ## Configuration
 
