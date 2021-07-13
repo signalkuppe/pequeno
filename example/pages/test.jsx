@@ -7,6 +7,7 @@ import TestButton from '../components/ui/TestButton';
 import TestExternalLib from '../components/ui/TestExternalLib';
 import TestLazyImages from '../components/ui/TestLazyImages';
 import TestModal from '../components/ui/TestModal';
+import TestHtml from '../components/ui/TestHtml';
 import Accordion from '../components/ui/Accordion';
 import VerticalSpace from '../components/ui/VerticalSpace';
 import Link from '../components/ui/Link';
@@ -149,6 +150,11 @@ export default function Test({ route, foo }) {
                 <strong>Svg test</strong>
             </p>
             <TestSvg width="20em" />
+            <VerticalSpace />
+            <p>
+                <strong>Html block test</strong>
+            </p>
+            <TestHtml />
         </BaseLayout>
     );
 }

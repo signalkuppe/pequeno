@@ -298,11 +298,21 @@ You can also insert **inline scripts** with the inline prop like this
 <Script inline>{client}</Script>
 ```
 
-## Example site
+## Html strings
 
-see the `/example` folder for a complete website
+You can use the **built-in Html component** to output html strings.
 
-## Included plugins
+```js
+import React from 'react';
+import { Html } from 'pequeno';
+import { myHtmlString } from './example-data';
+
+export default function TestHtml() {
+    return <Html>{myHtmlString}</Html>;
+}
+```
+
+## Svgs
 
 Svg imports are included, so you can do this
 
@@ -312,6 +322,10 @@ export default function SvgTest() {
     return <TestSvg width="20em" />;
 }
 ```
+
+## Example site
+
+see the `/example` folder for a complete website
 
 ## Performance
 
