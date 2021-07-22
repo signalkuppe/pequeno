@@ -87,9 +87,9 @@ For example:
 ```js
 module.exports = function () {
     return new Promise((resolve) => {
-        const response = await fetch('https://my.custom.endpoint');
-        const data = await response.json();
-        resolve(data);
+        fetch('https://my.custom.endpoint')
+            .then((response) => response.json())
+            .then((data) => resolve(data));
     });
 };
 ```
