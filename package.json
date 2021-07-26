@@ -1,6 +1,6 @@
 {
   "name": "pequeno",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "A simpler react static site generator",
   "homepage": "https://github.com/signalkuppe/pequeno",
   "author": {
