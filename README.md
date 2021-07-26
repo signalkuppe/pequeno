@@ -164,6 +164,15 @@ export default function News({ pagination, route }) {
 }
 ```
 
+In this case, the pagination object will contain also the prev and the next item payload
+
+```js
+{
+    prevItem: { ...props }, // an object containing the item payload
+    nextItem: { ...props }
+}
+```
+
 ## Styling
 
 Pequeno integrates [Styled Components](https://styled-components.com/) for styling. but you can also use plain css if you want.
