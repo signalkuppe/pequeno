@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import vars from '../vars';
 import BaseLayout from '../components/layout/Base';
 import Head from '../components/layout/Head';
@@ -6,6 +7,11 @@ import Image from '../components/ui/Image';
 import List from '../components/ui/List';
 import Link from '../components/ui/Link';
 import VerticalSpace from '../components/ui/VerticalSpace';
+
+const StyledList = styled(List)`
+    display: flex;
+    justify-content: space-between;
+`;
 
 export const paginate = {
     data: 'news',
@@ -42,18 +48,22 @@ export default function NewsItem({ route, pagination }) {
             <Image src={news.image} width="1280" height="853" />
             <div dangerouslySetInnerHTML={{ __html: news.body }} />
             <VerticalSpace size={2} />
-            <List reset inline>
+            <StyledList reset inline>
                 {pagination.prev && (
                     <li>
-                        <Link href={pagination.prev}>&laquo; Prev</Link>
+                        <Link href={pagination.prev}>
+                            &laquo; {pagination.prevItem.title}
+                        </Link>
                     </li>
                 )}
                 {pagination.next && (
                     <li>
-                        <Link href={pagination.next}>Next &raquo;</Link>
+                        <Link href={pagination.next}>
+                            {pagination.nextItem.title} &raquo;
+                        </Link>
                     </li>
                 )}
-            </List>
+            </StyledList>
         </BaseLayout>
     );
 }
