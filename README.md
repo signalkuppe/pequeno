@@ -85,7 +85,7 @@ For example:
 **data/news.js**
 
 ```js
-module.exports = function () {
+module.exports = function ({ config }) {
     return new Promise((resolve) => {
         fetch('https://my.custom.endpoint')
             .then((response) => response.json())
@@ -94,7 +94,7 @@ module.exports = function () {
 };
 ```
 
-Now you have a `news` collection available in your templates.
+Now you have a `news` collection available in your templates. Every data promise function receives the peqeueno instance. So, for example, you can get the config object.
 
 ## Pagination
 

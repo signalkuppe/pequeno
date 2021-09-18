@@ -24,6 +24,6 @@ module.exports = function () {
 
         setTimeout(() => {
             resolve(news);
-        }, 1000);
+        }, 4000);
     });
 };
