@@ -17,7 +17,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
-    "dev": "node lib/cmd.js --verbose --serve --example --clean",
+    "dev": "node lib/cmd.js  --serve --example --clean",
+    "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean",
     "build-verbose": "node lib/cmd.js --verbose --example --clean",
     "build": "node lib/cmd.js --example --clean"
   },

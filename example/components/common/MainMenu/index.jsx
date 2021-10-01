@@ -16,7 +16,10 @@ export default function MainMenu({ route }) {
         {
             href: newsPageLink(1),
             text: 'News',
-            active: route.name === 'news' || route.name === 'news-item',
+            active:
+                route.name === 'news' ||
+                route.name === 'news-item' ||
+                route.name === 'news-by-category',
         },
         {
             href: testPagePermalink,

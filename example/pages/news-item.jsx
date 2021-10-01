@@ -7,6 +7,7 @@ import Image from '../components/ui/Image';
 import List from '../components/ui/List';
 import Link from '../components/ui/Link';
 import VerticalSpace from '../components/ui/VerticalSpace';
+import { CategoryNewsPageLink } from './news-by-category';
 
 const StyledList = styled(List)`
     display: flex;
@@ -45,6 +46,12 @@ export default function NewsItem({ route, pagination }) {
             }
         >
             <h1>{news.title}</h1>
+            <p>
+                posted in{' '}
+                <Link href={CategoryNewsPageLink(1, news.category)}>
+                    {news.category}
+                </Link>
+            </p>
             <Image src={news.image} width="1280" height="853" />
             <div dangerouslySetInnerHTML={{ __html: news.body }} />
             <VerticalSpace size={2} />
