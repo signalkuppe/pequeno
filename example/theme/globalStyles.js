@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { vars, getVar } from './';
+import { vars } from './';
 
 const rootVars = css`
     ${vars}
@@ -49,7 +49,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     background-color: transparent;
-    color: ${getVar('--color-primary')};
+    color: var(--color-primary);
     text-decoration: none;
   }
 

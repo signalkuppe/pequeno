@@ -1,14 +1,15 @@
 import React from 'react';
+import { uniq, map } from 'lodash';
 import vars from '../vars';
 import BaseLayout from '../components/layout/Base';
 import Head from '../components/layout/Head';
-import List from '../components/ui/List';
-import Link from '../components/ui/Link';
+import NewsList from '../features/news/NewsList';
+import NewsTabs from '../features/news/NewsTabs';
 import VerticalSpace from '../components/ui/VerticalSpace';
 
 export const paginate = {
     data: 'news',
-    size: 2,
+    size: 8,
     groupBy: 'category',
 };
 
@@ -26,8 +27,9 @@ export const permalink = function (data) {
     return CategoryNewsPageLink(page, group);
 };
 
-export default function News({ pagination, route }) {
+export default function News({ pagination, route, news: allNews }) {
     const news = pagination.items;
+    const categories = uniq(map(allNews, 'category'));
     return (
         <BaseLayout
             route={route}
@@ -41,47 +43,14 @@ export default function News({ pagination, route }) {
                 />
             }
         >
-            <h1>{pagination.group}</h1>
+            <h1>{pagination.group} news</h1>
+            <NewsTabs categories={categories} active={pagination.group} />
+            <NewsList news={news} pagination={pagination} />
+            <VerticalSpace />
             <p>
-                This page show a paginated list of items grouped by a specific
-                prop (category)
+                This page show a paginated list of{' '}
+                <strong>items grouped by</strong> a specific prop (category)
             </p>
-            <List reset>
-                {news.map((n, i) => (
-                    <li key={i}>
-                        <Link underline href={`/news/${n.slug}/`}>
-                            <h2>{n.title}</h2>
-                        </Link>
-                    </li>
-                ))}
-            </List>
-            <VerticalSpace size={2} />
-            <List reset inline>
-                {pagination.prev && (
-                    <li>
-                        <Link href={pagination.prev}>&laquo; Prev</Link>
-                    </li>
-                )}
-                {pagination.next && (
-                    <li>
-                        <Link href={pagination.next}>Next &raquo;</Link>
-                    </li>
-                )}
-            </List>
-            <VerticalSpace size={2} />
-            <List reset inline>
-                {pagination.pages.map((page, i) => (
-                    <li key={i}>
-                        <Link
-                            underline={pagination.page === i + 1}
-                            href={page}
-                            title={`Go to page ${i + 1}`}
-                        >
-                            {i + 1}
-                        </Link>
-                    </li>
-                ))}
-            </List>
         </BaseLayout>
     );
 }

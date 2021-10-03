@@ -14,7 +14,7 @@ module.exports = function () {
            Suspendisse vel nulla sit amet metus pellentesque maximus a a leo.
             Vivamus semper a odio quis dapibus. Donec eu vehicula metus.
              Etiam euismod diam sit amet nunc posuere, ornare aliquam sem pretium.</p>`;
-        const news = _.times(32, (i) => ({
+        const news = _.times(36, (i) => ({
             title: `News title ${i + 1}`,
             slug: `news-${i + 1}-slug`,
             abstract: `News ${i + 1} abstract`,

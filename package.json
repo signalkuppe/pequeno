@@ -28,7 +28,7 @@
   "main": "./lib/exports.js",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "3.7.2",
+    "async": "3.2.1",
     "browser-sync": "2.27.5",
     "cheerio": "1.0.0-rc.10",
     "chokidar": "3.5.2",

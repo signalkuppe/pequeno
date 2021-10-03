@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import List from '../../ui/List';
 import Link from '../../ui/Link';
 import { permalink as indexPermalink } from '../../../pages/index';
 import { newsPageLink } from '../../../pages/news';
 import { permalink as testPagePermalink } from '../../../pages/test';
+import HorizontalRule from '../../ui/HorizontalRule';
+import VerticalSpace from '../../ui/VerticalSpace';
 
 export default function MainMenu({ route }) {
     const links = [
@@ -38,7 +39,8 @@ export default function MainMenu({ route }) {
                     </li>
                 ))}
             </List>
-            <hr />
+            <VerticalSpace size={0.5} />
+            <HorizontalRule />
         </nav>
     );
 }
