@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import vars from '../vars';
+import Html from '../../lib/Html';
 import BaseLayout from '../components/layout/Base';
 import Head from '../components/layout/Head';
 import Image from '../components/ui/Image';
 import List from '../components/ui/List';
 import Link from '../components/ui/Link';
 import VerticalSpace from '../components/ui/VerticalSpace';
+import { CategoryNewsPageLink } from './news-by-category';
 
 const StyledList = styled(List)`
     display: flex;
     justify-content: space-between;
+`;
+
+const ImageWrapper = styled.figure`
+    background: var(--color-borders);
 `;
 
 export const paginate = {
@@ -45,8 +51,17 @@ export default function NewsItem({ route, pagination }) {
             }
         >
             <h1>{news.title}</h1>
-            <Image src={news.image} width="1280" height="853" />
-            <div dangerouslySetInnerHTML={{ __html: news.body }} />
+            <p>
+                posted in{' '}
+                <Link href={CategoryNewsPageLink(1, news.category)}>
+                    {news.category}
+                </Link>
+            </p>
+            <ImageWrapper>
+                <Image src={news.image} width="1280" height="853" />
+            </ImageWrapper>
+
+            <Html>{news.body}</Html>
             <VerticalSpace size={2} />
             <StyledList reset inline>
                 {pagination.prev && (

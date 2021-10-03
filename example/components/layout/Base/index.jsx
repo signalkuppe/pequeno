@@ -4,6 +4,7 @@ import MainMenu from '../../common/MainMenu';
 import Footer from '../../common/Footer';
 import GlobalStyles from '../../../theme/globalStyles';
 import VerticalSpace from '../../ui/VerticalSpace';
+import HorizontalRule from '../../ui/HorizontalRule';
 
 const Container = styled.div`
     padding: 1.5em;
@@ -24,7 +25,7 @@ export default function BaseLayout({ route, head, children }) {
                     <main>{children}</main>
                     <VerticalSpace size={2} />
                     <footer>
-                        <hr />
+                        <HorizontalRule />
                         <Footer />
                     </footer>
                 </Container>

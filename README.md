@@ -143,7 +143,7 @@ You will get a pagination object with this data.
 }
 ```
 
-### Programmatically create pages for items.
+### Programmatically create pages from data.
 
 Just use a **size of 1** in the pagination export and you'll get a page for each news
 
@@ -172,6 +172,36 @@ In this case, the pagination object will contain also the prev and the next item
     nextItem: { ...props }
 }
 ```
+
+### Grouping items
+
+You can generates list of grouped content by adding a **groupBy** prop to the pagination object.
+The groupBy prop must match an existing prop of your item object.
+
+```js
+export const paginate = {
+    data: 'news',
+    size: 8,
+    groupBy: 'category',
+};
+
+export const CategoryNewsPageLink = function (page, group) {
+    group = group.toLowerCase();
+    if (page === 1) {
+        return `/news/${group}/index.html`;
+    } else {
+        return `/news/${group}/${page}/index.html`;
+    }
+};
+
+export const permalink = function (data) {
+    const { page, group } = data.pagination;
+    return CategoryNewsPageLink(page, group);
+};
+```
+
+The pagination object will contain the group prop.
+**Grouping is limited to string props.**
 
 ## Styling
 

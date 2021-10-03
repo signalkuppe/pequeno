@@ -10,30 +10,32 @@ import VerticalSpace from '../components/ui/VerticalSpace';
 export const paginate = {
     data: 'news',
     size: 8,
+    groupBy: 'category',
 };
 
-export const newsPageLink = function (page) {
+export const CategoryNewsPageLink = function (page, group) {
+    group = group.toLowerCase();
     if (page === 1) {
-        return `/news/index.html`;
+        return `/news/${group}/index.html`;
     } else {
-        return `/news/${page}/index.html`;
+        return `/news/${group}/${page}/index.html`;
     }
 };
 
 export const permalink = function (data) {
-    const { page } = data.pagination;
-    return newsPageLink(page);
+    const { page, group } = data.pagination;
+    return CategoryNewsPageLink(page, group);
 };
 
-export default function News({ pagination, route }) {
+export default function News({ pagination, route, news: allNews }) {
     const news = pagination.items;
-    const categories = uniq(map(news, 'category'));
+    const categories = uniq(map(allNews, 'category'));
     return (
         <BaseLayout
             route={route}
             head={
                 <Head
-                    title={`News${
+                    title={`${pagination.group} News${
                         pagination.page > 0 ? `, page ${pagination.page}` : ``
                     }`}
                     slogan={vars.siteName}
@@ -41,14 +43,13 @@ export default function News({ pagination, route }) {
                 />
             }
         >
-            <h1>News</h1>
-            <NewsTabs categories={categories} />
+            <h1>{pagination.group} news</h1>
+            <NewsTabs categories={categories} active={pagination.group} />
             <NewsList news={news} pagination={pagination} />
             <VerticalSpace />
             <p>
                 This page show a paginated list of{' '}
-                <strong>items fetched from an API</strong> at build time. <br />
-                Each item generates a page, with its own url.
+                <strong>items grouped by</strong> a specific prop (category)
             </p>
         </BaseLayout>
     );
