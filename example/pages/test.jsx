@@ -8,6 +8,7 @@ import TestExternalLib from '../components/ui/TestExternalLib';
 import TestLazyImages from '../components/ui/TestLazyImages';
 import TestModal from '../components/ui/TestModal';
 import TestHtml from '../components/ui/TestHtml';
+import TestJs from '../components/ui/TestJs';
 import Accordion from '../components/ui/Accordion';
 import VerticalSpace from '../components/ui/VerticalSpace';
 import Link from '../components/ui/Link';
@@ -155,6 +156,10 @@ export default function Test({ route, foo }) {
                 <strong>Html block test</strong>
             </p>
             <TestHtml />
+            <p>
+                <strong>Js strings test</strong>
+            </p>
+            <TestJs />
         </BaseLayout>
     );
 }
