@@ -6,7 +6,7 @@ import VerticalSpace from '../../../components/ui/VerticalSpace';
 import { newsPageLink } from '../../../pages/news';
 import { CategoryNewsPageLink } from '../../../pages/news-by-category';
 
-export default function NewsTabs({ categories, active, ...props }) {
+export default function NewsTabs({ categories, category }) {
     const tabs = [
         { text: 'All', href: newsPageLink(1) },
         ...categories.map((cat) => ({
@@ -17,8 +17,8 @@ export default function NewsTabs({ categories, active, ...props }) {
 
     let activeTab = 0;
 
-    if (active) {
-        activeTab = findIndex(tabs, (t) => t.text === active);
+    if (category) {
+        activeTab = findIndex(tabs, (t) => t.text === category);
     }
 
     return (

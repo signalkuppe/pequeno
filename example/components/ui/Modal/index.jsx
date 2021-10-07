@@ -125,7 +125,7 @@ export default function Modal({ id, title, children, ...props }) {
             <Script
                 libs={[
                     {
-                        where: 'head',
+                        where: 'body',
                         tag: '<script src="/libs/micromodal/micromodal.js" />',
                     },
                 ]}

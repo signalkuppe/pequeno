@@ -9,7 +9,7 @@ const StyledA = styled.a`
         `}
 `;
 
-export default function List({ underline, children, ...props }) {
+export default function Link({ underline, children, ...props }) {
     return (
         <StyledA underline={underline} {...props}>
             {children}

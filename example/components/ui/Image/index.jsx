@@ -23,7 +23,7 @@ export default function Image({ lazy, ...props }) {
                 <Script
                     libs={[
                         {
-                            where: 'head',
+                            where: 'body',
                             tag: '<script src="/libs/vanilla-lazyload/lazyload.js" />',
                         },
                     ]}
