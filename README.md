@@ -44,7 +44,10 @@ you can run the pequeno command with these options
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
 -   `--serve` fires a server that watches for changes.
+-   `--page` builds only the specified page (--page=/news/index.html).
 -   `--example` builds the example site.
+
+Page option is usefull during development to speed up page refresh or during build if you want to write only a specified page.
 
 ## Configuration
 
@@ -85,16 +88,29 @@ For example:
 **data/news.js**
 
 ```js
-module.exports = function ({ config }) {
+module.exports = function () {
+    const { config } = pequeno;
     return new Promise((resolve) => {
         fetch('https://my.custom.endpoint')
             .then((response) => response.json())
-            .then((data) => resolve(data));
+            .then((data) => {
+                // eg: you can use the config object to output a file during data fetch
+                fs.outputJsonSync(
+                    path.join(
+                        process.cwd(),
+                        config.outputDir,
+                        '_data',
+                        'computed-json.json',
+                    ),
+                    data.map((item) => _.pick(item, ['category', 'title'])),
+                );
+                resolve(data);
+            });
     });
 };
 ```
 
-Now you have a `news` collection available in your templates. Every data promise function receives the peqeueno instance. So, for example, you can get the config object.
+Now you have a `news` collection available in your templates. In Every data promise function you cana ccess the pequeno instance. So, for example, you can get the config object.
 
 ## Pagination
 
