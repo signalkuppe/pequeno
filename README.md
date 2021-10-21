@@ -73,7 +73,7 @@ module.exports = {
         'node_modules/vanilla-lazyload/dist/lazyload.js':
             'libs/vanilla-lazyload/lazyload.js',
     },
-    // and async function to be run after the build
+    // and async function to be run after the build (see below)
     afterBuild: async function () {},
 };
 ```
@@ -375,6 +375,57 @@ Svg imports are included, so you can do this
 import TestSvg from '../public/img/TestSvg.svg';
 export default function SvgTest() {
     return <TestSvg width="20em" />;
+}
+```
+
+## After build
+
+Using the **afterBuild config prop** you can execute async code after the website has been built.
+The afterBuild function receives the renderedPages argument, which contains all the pages created with all the data including the markup.
+
+For example you can create a sitemap and move the service worker file
+
+```js
+afterBuild: async function (renderedPages) {
+    // create a sitemap
+    const sitemapLinks = renderedPages.map((page) => ({
+        url: page.data.route.href,
+        changefreq: 'daily',
+        priority: 0.3,
+    }));
+    const stream = new SitemapStream({
+        hostname: 'https://priceless-euclid-d30b74.netlify.app',
+    });
+    const data = await streamToPromise(
+        Readable.from(sitemapLinks).pipe(stream),
+    );
+    await fs.writeFile(
+        path.join(pequeno.config.outputDir, 'sitemap.xml'),
+        data.toString(),
+        'utf8',
+    );
+
+    // move service worker
+    await fs.copy(
+        path.join(pequeno.baseDir, 'service-worker.js'),
+        path.join(pequeno.config.outputDir, 'service-worker.js'),
+    );
+}
+```
+
+Each rendered page contains the following props
+
+```js
+{
+    markup: `<html>....</html>`, // the page markup
+    styles: `<style>...</style>`, // the extracted page styles (if using styled components)
+    data: {
+        route: {
+            name: 'news-item',
+            href: `/news/news-1-slug/index.html`,
+            pagination: {}
+        }
+    },
 }
 ```
 

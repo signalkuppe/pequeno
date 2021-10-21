@@ -17,12 +17,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
-    "dev": "node lib/cmd.js  --serve --example",
+    "dev": "node lib/cmd.js  --serve --example --noAfterBuild",
     "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean",
     "dev-page": "node lib/cmd.js --example --serve --page=/news/news-1-slug/index.html",
     "build-verbose": "node lib/cmd.js --verbose --example --clean",
     "build": "node lib/cmd.js --example --clean",
-    "build-page": "node lib/cmd.js --example --clean --page=/news/news-1-slug/index.html"
+    "build-path": "node lib/cmd.js --example --clean --path=/news/news-1-slug/index.html",
+    "build-page-path": "node lib/cmd.js --example --clean --page=news-item.jsx --path=/news/news-1-slug/index.html"
   },
   "bin": {
     "pequeno": "lib/cmd.js"
@@ -53,6 +54,7 @@
     "fisarmonica": "^1.3.5",
     "micromodal": "^0.4.6",
     "release-it": "^14.11.6",
+    "sitemap": "^7.0.0",
     "vanilla-lazyload": "^17.4.0"
   }
 }
