@@ -44,10 +44,12 @@ you can run the pequeno command with these options
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
 -   `--serve` fires a server that watches for changes.
--   `--page` builds only the specified page (--page=/news/index.html).
+-   `--path` builds only the specified path (--page=/news/index.html).
+-   `--page` builds only the specified page (--page=news-item.jsx).
+-   `--noAfterBuild` prevents the afterBuild function to run
 -   `--example` builds the example site.
 
-Page option is usefull during development to speed up page refresh or during build if you want to write only a specified page.
+Page and path options are usefull during development to speed up page refresh or during build if you want to write only a specified page or path.
 
 ## Configuration
 
