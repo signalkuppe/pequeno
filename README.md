@@ -46,7 +46,8 @@ you can run the pequeno command with these options
 -   `--serve` fires a server that watches for changes.
 -   `--path` builds only the specified path (--page=/news/index.html).
 -   `--page` builds only the specified page (--page=news-item.jsx).
--   `--noAfterBuild` prevents the afterBuild function to run
+-   `--noAfterBuild` prevents the afterBuild function to run (see below)
+-   `--noProcessHtml` prevents the processHtml function to run (see below)
 -   `--example` builds the example site.
 
 Page and path options are usefull during development to speed up page refresh or during build if you want to write only a specified page or path.
@@ -382,10 +383,10 @@ export default function SvgTest() {
 
 ## After build
 
-Using the **afterBuild config prop** you can execute async code after the website has been built.
+Using the **afterBuild** config prop you can execute async code after the website has been built.
 The afterBuild function receives the renderedPages argument, which contains all the pages created with all the data including the markup.
 
-For example you can create a sitemap and move the service worker file
+For example you can create a sitemap.
 
 ```js
 afterBuild: async function (renderedPages) {
@@ -429,6 +430,25 @@ Each rendered page contains the following props
         }
     },
 }
+```
+
+## Process generated html
+
+Using the **processHtml** config prop you can alter the generated html during the build process. The processHtml function receives the [cheerio](https://github.com/cheeriojs/cheerio) dom instance and the page data. For example you can inject a script in the head. You can use data to manipulate html only for some spacific pages. Be sure to return the **html()** method of the cheerio object. The processHtml function should be synchronous.
+
+```js
+processHtml: function ($, data) {
+    // data: { route: { name, ...}}
+    $('head').append(`
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>`);
+    return $.html();
+},
 ```
 
 ## Example site

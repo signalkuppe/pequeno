@@ -1,7 +1,5 @@
 import React from 'react';
 import vars from '../../../vars';
-import Script from '../../../../lib/Script';
-import client from './index.client.js';
 
 export default function Head({
     title,
@@ -80,7 +78,6 @@ export default function Head({
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
-            <Script inline>{client}</Script>
         </head>
     );
 }

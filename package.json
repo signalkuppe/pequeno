@@ -17,9 +17,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
-    "dev": "node lib/cmd.js  --serve --example --noAfterBuild",
-    "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean",
-    "dev-page": "node lib/cmd.js --example --serve --page=/news/news-1-slug/index.html",
+    "dev": "node lib/cmd.js  --serve --example --noAfterBuild --noProcessHtml",
+    "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean --noAfterBuild --noProcessHtml",
+    "dev-page": "node lib/cmd.js --example --serve --page=/news/news-1-slug/index.html --noAfterBuild --noProcessHtml",
     "build-verbose": "node lib/cmd.js --verbose --example --clean",
     "build": "node lib/cmd.js --example --clean",
     "build-path": "node lib/cmd.js --example --clean --path=/news/news-1-slug/index.html",

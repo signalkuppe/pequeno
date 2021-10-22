@@ -14,6 +14,17 @@ module.exports = {
         'node_modules/vanilla-lazyload/dist/lazyload.js':
             'libs/vanilla-lazyload/lazyload.js',
     },
+    processHtml: function ($, data) {
+        $('head').append(`
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>`);
+        return $.html();
+    },
     afterBuild: async function (renderedPages) {
         // create a sitemap
         const sitemapLinks = renderedPages.map((page) => ({
@@ -31,12 +42,6 @@ module.exports = {
             path.join(pequeno.config.outputDir, 'sitemap.xml'),
             data.toString(),
             'utf8',
-        );
-
-        // move service worker
-        await fs.copy(
-            path.join(pequeno.baseDir, 'service-worker.js'),
-            path.join(pequeno.config.outputDir, 'service-worker.js'),
         );
     },
 };
