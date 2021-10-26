@@ -2,6 +2,8 @@
 
 > A simpler [React](https://reactjs.org/) static site generator.
 
+<div style="padding: 1em; background: #FFFFCC; border: 1px solid palegoldenrod;">There’s a <a href="https://github.com/signalkuppe/pequeno/tags">beta version</a> rolling out with incremental build, <a href="https://github.com/signalkuppe/pequeno/tags">check it out</a> (feedbacks are welcome)</div>
+
 ## Demo
 
 [https://priceless-euclid-d30b74.netlify.app/](https://priceless-euclid-d30b74.netlify.app/)
