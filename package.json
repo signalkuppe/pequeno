@@ -29,7 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "3.2.1",
-    "browser-sync": "2.27.5",
+    "browser-sync": "2.27.6",
     "cheerio": "1.0.0-rc.10",
     "chokidar": "3.5.2",
     "esbuild": "0.12.28",
