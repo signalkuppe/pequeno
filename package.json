@@ -42,12 +42,10 @@
     "lodash": "4.17.21",
     "minimist": "1.2.5",
     "node-cache": "5.1.2",
-    "object-hash": "^2.2.0",
     "ora": "5.4.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "styled-components": "5.3.1",
-    "throng": "^5.0.0",
     "winston": "3.3.3"
   },
   "devDependencies": {
