@@ -43,14 +43,24 @@ you can run the pequeno command with these options
 
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
--   `--serve` fires a server that watches for changes.
--   `--path` builds only the specified path (--page=/news/index.html).
--   `--page` builds only the specified page (--page=news-item.jsx).
+-   `--serve` fires a server that watches for changes
+-   `--path` builds only the specified path (--page=/news/index.html)
+-   `--page` builds only the specified page (--page=news-item)
+-   `--data` fetches only the specified data file (--data=news)
 -   `--noAfterBuild` prevents the afterBuild function to run (see below)
 -   `--noProcessHtml` prevents the processHtml function to run (see below)
+-   `--noData` skips the data fetch step
 -   `--example` builds the example site.
 
-Page and path options are usefull during development to speed up page refresh or during build if you want to write only a specified page or path.
+Page and path options (together with --data) are usefull during development to speed up page refresh or during build if you want to write only a specified page or path.
+
+For example if you want to **develop the a specific news page** you can run
+
+`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --noAfterBuild --noProcessHtml --serve`
+
+Or if you want to develop a **single page** that doesn’t need any data you can be quicker with
+
+`npx pequeno --page=test --noData --noAfterBuild --noProcessHtml --serve`
 
 ## Configuration
 
@@ -113,7 +123,7 @@ module.exports = function () {
 };
 ```
 
-Now you have a `news` collection available in your templates. In Every data promise function you cana ccess the pequeno instance. So, for example, you can get the config object.
+Now you have a `news` collection available in your templates. In Every data promise function you can access the pequeno instance. So, for example, you can get the config object.
 
 ## Pagination
 

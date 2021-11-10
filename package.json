@@ -19,11 +19,9 @@
     "release": "release-it",
     "dev": "node lib/cmd.js  --serve --example --noAfterBuild --noProcessHtml",
     "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean --noAfterBuild --noProcessHtml",
-    "dev-page": "node lib/cmd.js --example --serve --page=/news/news-1-slug/index.html --noAfterBuild --noProcessHtml",
-    "build-verbose": "node lib/cmd.js --verbose --example --clean",
-    "build": "node lib/cmd.js --example --clean",
-    "build-path": "node lib/cmd.js --example --clean --path=/news/news-1-slug/index.html",
-    "build-page-path": "node lib/cmd.js --example --clean --page=news-item.jsx --path=/news/news-1-slug/index.html"
+    "dev-news": "node lib/cmd.js --example --serve --page=news-item --path=/news/news-1-slug/index.html --data=news --noAfterBuild --noProcessHtml",
+    "dev-page": "node lib/cmd.js --example --serve --page=test --noAfterBuild --noProcessHtml --noData",
+    "build-verbose": "node lib/cmd.js --verbose --example --clean"
   },
   "bin": {
     "pequeno": "lib/cmd.js"
