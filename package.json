@@ -21,6 +21,8 @@
     "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean --noAfterBuild --noProcessHtml",
     "dev-news": "node lib/cmd.js --example --serve --page=news-item --path=/news/news-1-slug/index.html --data=news --noAfterBuild --noProcessHtml",
     "dev-page": "node lib/cmd.js --example --serve --page=test --noAfterBuild --noProcessHtml --noData",
+    "dev-empty": "node lib/cmd.js --example --serve --page=empty --noAfterBuild --noProcessHtml --noData --noCopy --noPublicCopy",
+    "build": "node lib/cmd.js --example",
     "build-verbose": "node lib/cmd.js --verbose --example --clean"
   },
   "bin": {
@@ -30,10 +32,10 @@
   "license": "ISC",
   "dependencies": {
     "async": "3.2.1",
-    "browser-sync": "2.27.5",
+    "browser-sync": "2.27.7",
     "cheerio": "1.0.0-rc.10",
     "chokidar": "3.5.2",
-    "esbuild": "0.12.28",
+    "esbuild": "0.13.13",
     "esbuild-plugin-svgr": "0.0.3",
     "fast-glob": "3.2.7",
     "fs-extra": "10.0.0",

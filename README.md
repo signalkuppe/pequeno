@@ -50,17 +50,19 @@ you can run the pequeno command with these options
 -   `--noAfterBuild` prevents the afterBuild function to run (see below)
 -   `--noProcessHtml` prevents the processHtml function to run (see below)
 -   `--noData` skips the data fetch step
+-   `--noCopy` skips the copy defined in the config object
+-   `--noPublicCopy` skips the copy of publicDir
 -   `--example` builds the example site.
 
-Page and path options (together with --data) are usefull during development to speed up page refresh or during build if you want to write only a specified page or path.
+Page and path options (together with --data) are useful during development to speed up page refresh or during build if you want to write only a specified page or path.
 
 For example if you want to **develop the a specific news page** you can run
 
-`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --noAfterBuild --noProcessHtml --serve`
+`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --serve`
 
-Or if you want to develop a **single page** that doesn’t need any data you can be quicker with
+Or if you want to develop a **single page** that doesn’t need any data/libs/files you can be quicker with
 
-`npx pequeno --page=test --noData --noAfterBuild --noProcessHtml --serve`
+`npx pequeno --page=test --noData --noCopy --noPublicCopy --serve`
 
 ## Configuration
 
@@ -204,7 +206,7 @@ In this case, the pagination object will contain also the prev and the next item
 
 ### Grouping items
 
-You can generates list of grouped content by adding a **groupBy** prop to the pagination object.
+You can generate list of grouped content by adding a **groupBy** prop to the pagination object.
 The groupBy prop must match an existing prop of your item object.
 
 ```js
@@ -326,7 +328,7 @@ export default function Accordion({ items, ...props }) {
 }
 ```
 
-The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). you can specify the tag and also where to append it (head/body)
+The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). You can specify the tag and also where to append it (head/body)
 
 Then in **index.client.js**
 
