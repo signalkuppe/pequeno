@@ -26,9 +26,9 @@ npm install pequeno --save
 ```js
 import React from 'react';
 
-export const permalink = '/empty.html';
+export const permalink = '/index.html';
 
-export default function EmptyPage() {
+export default function Index() {
     return <div>Empty page</div>;
 }
 ```
@@ -38,6 +38,12 @@ export default function EmptyPage() {
 ```shell
 npx pequeno
 ```
+
+3. Open your browser
+
+and visit `http://localhost:8080`
+
+You should see your basic index page
 
 ## Cli options
 
