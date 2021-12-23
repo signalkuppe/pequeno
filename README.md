@@ -2,15 +2,14 @@
 
 > A simpler [React](https://reactjs.org/) static site generator.
 
-<div style="padding: 1em; background: #FFFFCC; border: 1px solid palegoldenrod;">👋 There’s a <a href="https://github.com/signalkuppe/pequeno/tags">beta version</a> rolling out with incremental build, <a href="https://github.com/signalkuppe/pequeno/tags">check it out</a> (feedbacks are welcome)</div>
-
 ## Demo
 
 [https://priceless-euclid-d30b74.netlify.app/](https://priceless-euclid-d30b74.netlify.app/)
 
 ## Why
 
-**Jsx** emerged as the leading template engine, since it gives a great **developer experience** together with **styled components.**
+**Jsx** emerged as the leading template engine, since it gives a great **developer experience.**
+
 Framework like [Gatsby](https://www.gatsbyjs.com/) or [NextJs](https://nextjs.org/) are great, but I wanted something lighter, dependency-free, using only vanilla js on the client.
 
 ## Installation
@@ -51,8 +50,26 @@ you can run the pequeno command with these options
 
 -   `--verbose` for verbose output
 -   `--clean` cleans the destination folder
--   `--serve` fires a server that watches for changes.
+-   `--serve` fires a server that watches for changes
+-   `--path` builds only the specified path (--page=/news/index.html)
+-   `--page` builds only the specified page (--page=news-item)
+-   `--data` fetches only the specified data file (--data=news)
+-   `--noAfterBuild` prevents the afterBuild function to run (see below)
+-   `--noProcessHtml` prevents the processHtml function to run (see below)
+-   `--noData` skips the data fetch step
+-   `--noCopy` skips the copy defined in the config object
+-   `--noPublicCopy` skips the copy of publicDir
 -   `--example` builds the example site.
+
+Page and path options (together with --data) are useful during development to **speed up page refresh** or during build if you want to **write only a specified page or path.**
+
+For example if you want to **develop a specific news page** you can run
+
+`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --serve`
+
+Or if you want to develop a **single page** that doesn’t need any data/libs/files you can be quicker with
+
+`npx pequeno --page=test --noData --noCopy --noPublicCopy --serve`
 
 ## Configuration
 
@@ -78,7 +95,7 @@ module.exports = {
         'node_modules/vanilla-lazyload/dist/lazyload.js':
             'libs/vanilla-lazyload/lazyload.js',
     },
-    // and async function to be run after the build
+    // and async function to be run after the build (see below)
     afterBuild: async function () {},
 };
 ```
@@ -93,16 +110,29 @@ For example:
 **data/news.js**
 
 ```js
-module.exports = function ({ config }) {
+module.exports = function () {
+    const { config } = pequeno;
     return new Promise((resolve) => {
         fetch('https://my.custom.endpoint')
             .then((response) => response.json())
-            .then((data) => resolve(data));
+            .then((data) => {
+                // eg: you can use the config object to output a file during data fetch
+                fs.outputJsonSync(
+                    path.join(
+                        process.cwd(),
+                        config.outputDir,
+                        '_data',
+                        'computed-json.json',
+                    ),
+                    data.map((item) => _.pick(item, ['category', 'title'])),
+                );
+                resolve(data);
+            });
     });
 };
 ```
 
-Now you have a `news` collection available in your templates. Every data promise function receives the peqeueno instance. So, for example, you can get the config object.
+Now you have a `news` collection available in your templates. In Every data promise function you can access the pequeno instance. So, for example, you can get the config object.
 
 ## Pagination
 
@@ -183,7 +213,7 @@ In this case, the pagination object will contain also the prev and the next item
 
 ### Grouping items
 
-You can generates list of grouped content by adding a **groupBy** prop to the pagination object.
+You can generate list of grouped content by adding a **groupBy** prop to the pagination object.
 The groupBy prop must match an existing prop of your item object.
 
 ```js
@@ -305,7 +335,7 @@ export default function Accordion({ items, ...props }) {
 }
 ```
 
-The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). you can specify the tag and also where to append it (head/body)
+The Script components has a `libs` prop where you can pass any external library you wish to use (proviously copied with the copy property in the config file). You can specify the tag and also where to append it (head/body)
 
 Then in **index.client.js**
 
@@ -368,6 +398,76 @@ import TestSvg from '../public/img/TestSvg.svg';
 export default function SvgTest() {
     return <TestSvg width="20em" />;
 }
+```
+
+## After build
+
+Using the **afterBuild** config prop you can execute async code after the website has been built.
+The afterBuild function receives the renderedPages argument, which contains all the pages created with all the data including the markup.
+
+For example you can create a sitemap.
+
+```js
+afterBuild: async function (renderedPages) {
+    // create a sitemap
+    const sitemapLinks = renderedPages.map((page) => ({
+        url: page.data.route.href,
+        changefreq: 'daily',
+        priority: 0.3,
+    }));
+    const stream = new SitemapStream({
+        hostname: 'https://priceless-euclid-d30b74.netlify.app',
+    });
+    const data = await streamToPromise(
+        Readable.from(sitemapLinks).pipe(stream),
+    );
+    await fs.writeFile(
+        path.join(pequeno.config.outputDir, 'sitemap.xml'),
+        data.toString(),
+        'utf8',
+    );
+
+    // move service worker
+    await fs.copy(
+        path.join(pequeno.baseDir, 'service-worker.js'),
+        path.join(pequeno.config.outputDir, 'service-worker.js'),
+    );
+}
+```
+
+Each rendered page contains the following props
+
+```js
+{
+    markup: `<html>....</html>`, // the page markup
+    styles: `<style>...</style>`, // the extracted page styles (if using styled components)
+    data: {
+        route: {
+            name: 'news-item',
+            href: `/news/news-1-slug/index.html`,
+            pagination: {}
+        }
+    },
+}
+```
+
+## Process generated html
+
+Using the **processHtml** config prop you can alter the generated html during the build process. The processHtml function receives the [cheerio](https://github.com/cheeriojs/cheerio) dom instance and the page data. For example you can inject a script in the head. You can use data to manipulate html only for some spacific pages. Be sure to return the **html()** method of the cheerio object. The processHtml function should be synchronous.
+
+```js
+processHtml: function ($, data) {
+    // data: { route: { name, ...}}
+    $('head').append(`
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>`);
+    return $.html();
+},
 ```
 
 ## Example site

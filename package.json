@@ -1,6 +1,6 @@
 {
   "name": "pequeno",
-  "version": "0.0.32",
+  "version": "0.1.0",
   "description": "A simpler react static site generator",
   "homepage": "https://github.com/signalkuppe/pequeno",
   "author": {
@@ -17,10 +17,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it",
-    "dev": "node lib/cmd.js  --serve --example --clean",
-    "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean",
-    "build-verbose": "node lib/cmd.js --verbose --example --clean",
-    "build": "node lib/cmd.js --example --clean"
+    "dev": "node lib/cmd.js  --serve --example --noAfterBuild --noProcessHtml",
+    "dev-verbose": "node lib/cmd.js  --verbose --serve --example --clean --noAfterBuild --noProcessHtml",
+    "dev-news": "node lib/cmd.js --example --serve --page=news-item --path=/news/news-1-slug/index.html --data=news --noAfterBuild --noProcessHtml",
+    "dev-page": "node lib/cmd.js --example --serve --page=test --noAfterBuild --noProcessHtml --noData",
+    "dev-empty": "node lib/cmd.js --example --serve --page=empty --noAfterBuild --noProcessHtml --noData --noCopy --noPublicCopy",
+    "build": "node lib/cmd.js --example",
+    "build-verbose": "node lib/cmd.js --verbose --example --clean"
   },
   "bin": {
     "pequeno": "lib/cmd.js"
@@ -29,10 +32,10 @@
   "license": "ISC",
   "dependencies": {
     "async": "3.2.1",
-    "browser-sync": "2.27.6",
+    "browser-sync": "2.27.7",
     "cheerio": "1.0.0-rc.10",
     "chokidar": "3.5.2",
-    "esbuild": "0.12.28",
+    "esbuild": "0.13.13",
     "esbuild-plugin-svgr": "0.0.3",
     "fast-glob": "3.2.7",
     "fisarmonica": "^1.3.5",
@@ -45,6 +48,7 @@
     "ora": "5.4.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
+    "sitemap": "^7.0.0",
     "styled-components": "5.3.1",
     "vanilla-lazyload": "^17.5.0",
     "winston": "3.3.3"
