@@ -8,7 +8,8 @@
 
 ## Why
 
-**Jsx** emerged as the leading template engine, since it gives a great **developer experience** together with **styled components.**
+**Jsx** emerged as the leading template engine, since it gives a great **developer experience.**
+
 Framework like [Gatsby](https://www.gatsbyjs.com/) or [NextJs](https://nextjs.org/) are great, but I wanted something lighter, dependency-free, using only vanilla js on the client.
 
 ## Installation
@@ -24,9 +25,9 @@ npm install pequeno --save
 ```js
 import React from 'react';
 
-export const permalink = '/empty.html';
+export const permalink = '/index.html';
 
-export default function EmptyPage() {
+export default function Index() {
     return <div>Empty page</div>;
 }
 ```
@@ -36,6 +37,12 @@ export default function EmptyPage() {
 ```shell
 npx pequeno
 ```
+
+3. Open your browser
+
+and visit `http://localhost:8080`
+
+You should see your basic index page
 
 ## Cli options
 
@@ -54,9 +61,9 @@ you can run the pequeno command with these options
 -   `--noPublicCopy` skips the copy of publicDir
 -   `--example` builds the example site.
 
-Page and path options (together with --data) are useful during development to speed up page refresh or during build if you want to write only a specified page or path.
+Page and path options (together with --data) are useful during development to **speed up page refresh** or during build if you want to **write only a specified page or path.**
 
-For example if you want to **develop the a specific news page** you can run
+For example if you want to **develop a specific news page** you can run
 
 `npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --serve`
 
