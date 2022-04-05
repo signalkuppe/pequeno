@@ -134,6 +134,20 @@ module.exports = function () {
 
 Now you have a `news` collection available in your templates. In Every data promise function you can access the pequeno instance. So, for example, you can get the config object.
 
+### Derived collections
+
+You can **export different functions from the same data file** to create derived collections from the main one.
+
+For example if you want to create a page for each photo in a news item you can export a photos function like this.
+
+```js
+module.exports.photos = function (news) {
+    return _.flatten(_.map(news, 'photos'));
+};
+```
+
+Non default exports receive the main collection as the **first argument**. Non default exports should be synchronous.
+
 ## Pagination
 
 You can paginate your data creating lists of content. Just export a **paginate object** giving the collection name in the data prop. For example you can create pages that lists chunks of 10 news in this way.

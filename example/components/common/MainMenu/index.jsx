@@ -20,6 +20,7 @@ export default function MainMenu({ route }) {
             active:
                 route.name === 'news' ||
                 route.name === 'news-item' ||
+                route.name === 'news-photo' ||
                 route.name === 'news-by-category',
         },
         {

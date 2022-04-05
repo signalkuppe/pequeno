@@ -9,6 +9,7 @@ import List from '../components/ui/List';
 import Link from '../components/ui/Link';
 import VerticalSpace from '../components/ui/VerticalSpace';
 import { CategoryNewsPageLink } from './news-by-category';
+import { photoLink } from './news-photo';
 
 const StyledList = styled(List)`
     display: flex;
@@ -17,6 +18,23 @@ const StyledList = styled(List)`
 
 const ImageWrapper = styled.figure`
     background: var(--color-borders);
+`;
+
+const PhotoList = styled(List)`
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, 100px);
+`;
+
+const PhotoItem = styled.li`
+    width: 100px;
+    height: 100px;
+`;
+
+const StyledImage = styled(Image)`
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 `;
 
 export const paginate = {
@@ -62,7 +80,24 @@ export default function NewsItem({ route, pagination }) {
             </ImageWrapper>
 
             <Html>{news.body}</Html>
-            <VerticalSpace size={2} />
+            <VerticalSpace size={3} />
+            <h2>Photo gallery</h2>
+            <PhotoList reset>
+                {news.photos.map((photo, i) => (
+                    <PhotoItem key={i}>
+                        <Link href={photoLink(photo)} title={photo.title}>
+                            <StyledImage
+                                src={photo.image}
+                                width="100"
+                                height="100"
+                                alt={photo.alt}
+                                lazy
+                            />
+                        </Link>
+                    </PhotoItem>
+                ))}
+            </PhotoList>
+            <VerticalSpace size={5} />
             <StyledList reset inline>
                 {pagination.prev && (
                     <li>
