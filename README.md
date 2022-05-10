@@ -486,7 +486,8 @@ processHtml: function ($, data) {
 
 ## Example site
 
-see the `/example` folder for a complete website
+See the `/example` folder for a complete website.
+[signalkuppe.com](https://www.signalkuppe.com/) is built with Pequeño.
 
 ## Performance
 
