@@ -9,11 +9,6 @@ import Link from '../components/ui/Link';
 import VerticalSpace from '../components/ui/VerticalSpace';
 import { newsLink } from './news-item';
 
-const StyledList = styled(List)`
-    display: flex;
-    justify-content: space-between;
-`;
-
 export const paginate = {
     data: 'photos',
     size: 1,
@@ -77,3 +72,8 @@ export default function NewsItem({ route, pagination }) {
         </BaseLayout>
     );
 }
+
+const StyledList = styled(List)`
+    display: flex;
+    justify-content: space-between;
+`;

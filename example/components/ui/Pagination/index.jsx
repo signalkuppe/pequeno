@@ -4,20 +4,6 @@ import List from '../../../components/ui/List';
 import Link from '../../../components/ui/Link';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
 
-const StyledList = styled(List)``;
-
-const StyledLink = styled(Link)`
-    ${(props) =>
-        props.active &&
-        css`
-            font-weight: ${(props) => (props.active ? 'bold' : 'regular')};
-            border: 1px solid var(--color-primary);
-            padding: 0.1em 0.3em;
-        `}
-`;
-
-const StyledLi = styled.li``;
-
 export default function Pagination({ pagination }) {
     return (
         <>
@@ -54,3 +40,17 @@ export default function Pagination({ pagination }) {
         </>
     );
 }
+
+const StyledList = styled(List)``;
+
+const StyledLink = styled(Link)`
+    ${(props) =>
+        props.active &&
+        css`
+            font-weight: ${(props) => (props.active ? 'bold' : 'regular')};
+            border: 1px solid var(--color-primary);
+            padding: 0.1em 0.3em;
+        `}
+`;
+
+const StyledLi = styled.li``;

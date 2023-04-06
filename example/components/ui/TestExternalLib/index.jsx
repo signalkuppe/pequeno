@@ -3,14 +3,6 @@ import styled from 'styled-components';
 import Script from '../../../../lib/Script';
 import client from './index.client';
 
-const FadeDiv = styled.div`
-    border: 4px solid black;
-    background: yellow;
-    padding: 2em;
-    text-align: center;
-    margin-top: 1em;
-`;
-
 export default function TestExternalLib() {
     return (
         <>
@@ -31,3 +23,11 @@ export default function TestExternalLib() {
         </>
     );
 }
+
+const FadeDiv = styled.div`
+    background: var(--color-primary);
+    color: var(--background);
+    padding: 2em;
+    text-align: center;
+    margin-top: 1em;
+`;

@@ -6,12 +6,6 @@ import GlobalStyles from '../../../theme/globalStyles';
 import VerticalSpace from '../../ui/VerticalSpace';
 import HorizontalRule from '../../ui/HorizontalRule';
 
-const Container = styled.div`
-    padding: 1.5em;
-    max-width: 75ch;
-    margin: 0 auto;
-`;
-
 export default function BaseLayout({ route, head, children }) {
     return (
         <html lang="en">
@@ -33,3 +27,9 @@ export default function BaseLayout({ route, head, children }) {
         </html>
     );
 }
+
+const Container = styled.div`
+    padding: 1.5em;
+    max-width: 75ch;
+    margin: 0 auto;
+`;

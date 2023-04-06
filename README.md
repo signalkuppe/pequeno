@@ -8,9 +8,9 @@
 
 ## Why
 
-**Jsx** emerged as the leading template engine, since it gives a great **developer experience.**
+**Jsx** emerged as the leading template engine, due to its great **developer experience.**
 
-Framework like [Gatsby](https://www.gatsbyjs.com/) or [NextJs](https://nextjs.org/) are great, but I wanted something lighter, dependency-free, using only vanilla js on the client.
+Framework like [Gatsby](https://www.gatsbyjs.com/), [Astro](https://astro.build/) or [NextJs](https://nextjs.org/) are great, but I wanted something lighter, dependency-free, using only vanilla js on the client. It's best suited for small blogs, if you want to build something more complex you'll probably need one of the above tools.
 
 ## Installation
 
@@ -99,6 +99,8 @@ module.exports = {
     afterBuild: async function () {},
 };
 ```
+
+NB: All files and folders in the **publicDir** folder will be copied to the destination folder
 
 ## Data
 

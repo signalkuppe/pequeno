@@ -1,5 +1,7 @@
 export const vars = {
-    '--color-primary': 'crimson',
-    '--color-borders': '#e2e2e2',
+    '--color': '#d1d1d1',
+    '--background': '#101010',
+    '--color-primary': '#61DBFB',
+    '--color-borders': '#222',
     '--space-unit': '1.5em',
 };

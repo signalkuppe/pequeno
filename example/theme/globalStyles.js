@@ -9,9 +9,12 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     ${rootVars};
+    scrollbar-gutter: stable;
+    color-scheme: dark;
   }
 
   html {
+    font-size: 112.5%;
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
@@ -19,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    color: var(--color);
+    background: var(--background);
   }
 
 
@@ -106,6 +113,8 @@ const GlobalStyles = createGlobalStyle`
 
   figcaption {
     font-style: italic;
+    margin-top: 10px;
+    font-size: 80%;
   }
 
   button,
@@ -222,11 +231,6 @@ const GlobalStyles = createGlobalStyle`
 
   [hidden] {
     display: none;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.4;
   }
 
 `;

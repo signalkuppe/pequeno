@@ -4,13 +4,6 @@ import styled from 'styled-components';
 import Script from '../../../../lib/Script';
 import client from './index.client.js';
 
-const StyledImage = styled.img`
-    max-width: 100%;
-    height: auto;
-    display: block;
-    aspect-ratio: attr(width) / attr(height);
-`;
-
 export default function Image({ lazy, ...props }) {
     if (lazy) {
         return (
@@ -36,3 +29,10 @@ export default function Image({ lazy, ...props }) {
         return <StyledImage {...props} />;
     }
 }
+
+const StyledImage = styled.img`
+    max-width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: attr(width) / attr(height);
+`;

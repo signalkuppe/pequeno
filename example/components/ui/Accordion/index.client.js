@@ -2,6 +2,14 @@ var colorPrimary = getComputedStyle(document.documentElement).getPropertyValue(
     '--color-primary',
 );
 
+var color = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color',
+);
+
+var colorBackground = getComputedStyle(
+    document.documentElement,
+).getPropertyValue('--background');
+
 var fisarmonica = new Fisarmonica({
     selector: accordion_selector,
     theme: {
@@ -9,10 +17,12 @@ var fisarmonica = new Fisarmonica({
         fisarmonicaBorderColorFocus: colorPrimary,
         fisarmonicaInnerBorderColorFocus: colorPrimary,
         fisarmonicaButtonBackgroundFocus: colorPrimary,
+        fisarmonicaButtonBackground: 'colorBackground',
         fisarmonicaButtonColor: colorPrimary,
-        fisarmonicaButtonColorFocus: 'white',
+        fisarmonicaButtonColorFocus: colorBackground,
         fisarmonicaArrowColor: colorPrimary,
-        fisarmonicaArrowColorFocus: 'white',
-        fisarmonicaPanelBackground: 'white',
+        fisarmonicaArrowColorFocus: colorBackground,
+        fisarmonicaPanelBackground: colorBackground,
+        fisarmonicaPanelColor: color,
     },
 });

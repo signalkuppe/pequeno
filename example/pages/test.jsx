@@ -6,21 +6,12 @@ import Head from '../components/layout/Head';
 import TestButton from '../components/ui/TestButton';
 import TestExternalLib from '../components/ui/TestExternalLib';
 import TestLazyImages from '../components/ui/TestLazyImages';
-import TestModal from '../components/ui/TestModal';
 import TestHtml from '../components/ui/TestHtml';
 import TestJs from '../components/ui/TestJs';
 import Accordion from '../components/ui/Accordion';
 import VerticalSpace from '../components/ui/VerticalSpace';
 import Link from '../components/ui/Link';
 import TestSvg from '../public/img/TestSvg.svg';
-
-const StyledTest = styled.div`
-    user-select: none;
-    transition: all 0.5s;
-    border: 4px solid black;
-    padding: 1em;
-    hyphens: auto;
-`;
 
 export const permalink = '/test/index.html';
 
@@ -117,21 +108,7 @@ export default function Test({ route, foo }) {
                 </strong>
             </p>
             <TestExternalLib />
-            <p>
-                <strong>
-                    Testing another vanilla js lib,{' '}
-                    <Link
-                        target="_blank"
-                        rel="noopener"
-                        href="https://micromodal.vercel.app/"
-                        underline
-                    >
-                        Micromodal
-                    </Link>
-                </strong>
-            </p>
 
-            <TestModal />
             <VerticalSpace />
             <p>
                 <strong>
@@ -163,3 +140,12 @@ export default function Test({ route, foo }) {
         </BaseLayout>
     );
 }
+
+const StyledTest = styled.div`
+    user-select: none;
+    transition: all 0.5s;
+    background: var(--color-primary);
+    color: var(--background);
+    padding: 1em;
+    hyphens: auto;
+`;

@@ -11,32 +11,6 @@ import VerticalSpace from '../components/ui/VerticalSpace';
 import { CategoryNewsPageLink } from './news-by-category';
 import { photoLink } from './news-photo';
 
-const StyledList = styled(List)`
-    display: flex;
-    justify-content: space-between;
-`;
-
-const ImageWrapper = styled.figure`
-    background: var(--color-borders);
-`;
-
-const PhotoList = styled(List)`
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fit, 100px);
-`;
-
-const PhotoItem = styled.li`
-    width: 100px;
-    height: 100px;
-`;
-
-const StyledImage = styled(Image)`
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-`;
-
 export const paginate = {
     data: 'news',
     size: 1,
@@ -117,3 +91,29 @@ export default function NewsItem({ route, pagination }) {
         </BaseLayout>
     );
 }
+
+const StyledList = styled(List)`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const ImageWrapper = styled.figure`
+    background: var(--color-borders);
+`;
+
+const PhotoList = styled(List)`
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, 100px);
+`;
+
+const PhotoItem = styled.li`
+    width: 100px;
+    height: 100px;
+`;
+
+const StyledImage = styled(Image)`
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+`;

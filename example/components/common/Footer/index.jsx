@@ -7,7 +7,8 @@ export default function Footer() {
     return (
         <p>
             <small>
-                Footer &copy;<span id="copyright"></span> {vars.siteName}
+                Footer &copy;<span id="copyright"></span>{' '}
+                <a href={vars.github}>{vars.siteName}</a>
             </small>
             <Script>{client}</Script>
         </p>

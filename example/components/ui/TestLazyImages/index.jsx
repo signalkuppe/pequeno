@@ -4,13 +4,6 @@ import { times } from 'lodash';
 import Image from '../Image';
 import List from '../List';
 
-const StyledList = styled(List)`
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, 150px);
-    grid-gap: 1.5em;
-`;
-
 export default function TestLazyImages() {
     const images = times(32, (i) => ({
         src: `https://picsum.photos/id/${i + 1}/400/400`,
@@ -33,3 +26,10 @@ export default function TestLazyImages() {
         </StyledList>
     );
 }
+
+const StyledList = styled(List)`
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-gap: 1.5em;
+`;
