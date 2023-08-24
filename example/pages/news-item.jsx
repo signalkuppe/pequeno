@@ -50,7 +50,12 @@ export default function NewsItem({ route, pagination }) {
                 </Link>
             </p>
             <ImageWrapper>
-                <Image src={news.image} width="1280" height="853" />
+                <Image
+                    src={news.image}
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                />
             </ImageWrapper>
 
             <Html>{news.body}</Html>
@@ -65,7 +70,7 @@ export default function NewsItem({ route, pagination }) {
                                 width="100"
                                 height="100"
                                 alt={photo.alt}
-                                lazy
+                                loading="lazy"
                             />
                         </Link>
                     </PhotoItem>

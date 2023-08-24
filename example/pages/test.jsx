@@ -5,7 +5,6 @@ import BaseLayout from '../components/layout/Base';
 import Head from '../components/layout/Head';
 import TestButton from '../components/ui/TestButton';
 import TestExternalLib from '../components/ui/TestExternalLib';
-import TestLazyImages from '../components/ui/TestLazyImages';
 import TestHtml from '../components/ui/TestHtml';
 import TestJs from '../components/ui/TestJs';
 import Accordion from '../components/ui/Accordion';
@@ -109,20 +108,6 @@ export default function Test({ route, foo }) {
             </p>
             <TestExternalLib />
 
-            <VerticalSpace />
-            <p>
-                <strong>
-                    Testing{' '}
-                    <Link
-                        target="_blank"
-                        rel="noopener"
-                        href="https://github.com/verlok/vanilla-lazyload"
-                    >
-                        lazy images plugin
-                    </Link>
-                </strong>
-            </p>
-            <TestLazyImages />
             <VerticalSpace />
             <p>
                 <strong>Svg test</strong>

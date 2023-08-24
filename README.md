@@ -92,8 +92,7 @@ module.exports = {
     // an object that tells what to copy (key) and where (value)
     // useful to copy external libs to the destination folder
     copy: {
-        'node_modules/vanilla-lazyload/dist/lazyload.js':
-            'libs/vanilla-lazyload/lazyload.js',
+        'node_modules/node_lib/index.js': 'libs/node_lib/index.js',
     },
     // and async function to be run after the build (see below)
     afterBuild: async function () {},
@@ -259,7 +258,7 @@ The pagination object will contain the group prop.
 
 ## Styling
 
-Pequeno integrates [Styled Components](https://styled-components.com/) for styling. but you can also use plain css if you want.
+Pequeno integrates [Styled Components](https://styled-components.com/) for styling. but you can also use plain css if you want. If you are using styled components [babel-plugin-styled-components](https://styled-components.com/docs/tooling#babel-plugin) is included.
 
 **component usage**
 
