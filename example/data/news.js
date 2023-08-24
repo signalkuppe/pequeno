@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-module.exports = function () {
+module.exports = function (slug) {
     return new Promise((resolve) => {
         const html = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
          Vivamus quam lectus, cursus vel magna quis, sagittis eleifend eros.
@@ -36,9 +36,15 @@ module.exports = function () {
             };
         });
 
-        setTimeout(() => {
-            resolve(news);
-        }, 1000);
+        setTimeout(
+            () => {
+                const _news = !slug
+                    ? news
+                    : _.filter(news, (n) => n.slug === slug);
+                resolve(_news);
+            },
+            slug ? 100 : 1000,
+        );
     });
 };
 

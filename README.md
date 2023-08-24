@@ -54,6 +54,7 @@ you can run the pequeno command with these options
 -   `--path` builds only the specified path (--page=/news/index.html)
 -   `--page` builds only the specified page (--page=news-item)
 -   `--data` fetches only the specified data file (--data=news)
+-   `--dataParam` pass an optional param to the data function (--dataParam=32)
 -   `--noAfterBuild` prevents the afterBuild function to run (see below)
 -   `--noProcessHtml` prevents the processHtml function to run (see below)
 -   `--noData` skips the data fetch step
@@ -63,9 +64,9 @@ you can run the pequeno command with these options
 
 Page and path options (together with --data) are useful during development to **speed up page refresh** or during build if you want to **write only a specified page or path.**
 
-For example if you want to **develop a specific news page** you can run
+For example if you want to **develop a specific news page** maybe fetching just a single item from an api, you can run
 
-`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --serve`
+`npx pequeno --page=news-item --path=/news/news-1-slug/index.html --data=news --dataParam=news-1-slug --noAfterBuild --noProcessHtml --serve`
 
 Or if you want to develop a **single page** that doesn’t need any data/libs/files you can be quicker with
 
