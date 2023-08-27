@@ -469,10 +469,10 @@ Each rendered page contains the following props
 
 ## Process generated html
 
-Using the **processHtml** config prop you can alter the generated html during the build process. The processHtml function receives the [cheerio](https://github.com/cheeriojs/cheerio) dom instance and the page data. For example you can inject a script in the head. You can use data to manipulate html only for some spacific pages. Be sure to return the **html()** method of the cheerio object. The processHtml function should be synchronous.
+Using the **processHtml** config prop you can alter the generated html during the build process. The processHtml function receives the [cheerio](https://github.com/cheeriojs/cheerio) dom instance, the page data and the pequeno settings. For example you can inject a script in the head. You can use data to manipulate html only for some spacific pages. Be sure to return the **html()** method of the cheerio object. The processHtml function should be synchronous.
 
 ```js
-processHtml: function ($, data) {
+processHtml: function ($, data, config) {
     // data: { route: { name, ...}}
     $('head').append(`
     <script>
